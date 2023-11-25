@@ -169,3 +169,5 @@ console.log(myList.displayList());
 console.log(myList.length);
 console.log(myList.isEmpty());
 console.log(myList.getLength());
+
+console.log("Something New");
