@@ -168,3 +168,4 @@ myList.deleteNode(8);
 console.log(myList.displayList());
 console.log(myList.length);
 console.log(myList.isEmpty());
+console.log(myList.getLength());
