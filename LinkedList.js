@@ -148,7 +148,7 @@ class LinkedList {
 }
 
 // Test Area
-
+// Adding Some Test Cases
 const myList = new LinkedList();
 console.log(myList.isEmpty());
 myList.addToTail(4);
