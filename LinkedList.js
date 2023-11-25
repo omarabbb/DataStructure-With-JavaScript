@@ -147,32 +147,34 @@ class LinkedList {
   }
 }
 
-// Test Area
-// Adding Some Test Cases
-const myList = new LinkedList();
-console.log(myList.isEmpty());
-myList.addToTail(4);
-myList.addToTail(3);
-myList.addToTail(8);
-myList.addToTail(12);
-myList.addToHead(0);
+// // Test Area
+// // Adding Some Test Cases
+// const myList = new LinkedList();
+// console.log(myList.isEmpty());
+// myList.addToTail(4);
+// myList.addToTail(3);
+// myList.addToTail(8);
+// myList.addToTail(12);
+// myList.addToHead(0);
 
-console.log(myList.displayList());
-myList.insertAfter(4, 2);
-console.log(myList.displayList());
-myList.insertBefore(4, 5);
-console.log(myList.displayList());
-myList.deleteHead();
-console.log(myList.displayList());
-myList.deleteNode(8);
-console.log(myList.displayList());
-console.log(myList.length);
-console.log(myList.isEmpty());
-console.log(myList.getLength());
+// console.log(myList.displayList());
+// myList.insertAfter(4, 2);
+// console.log(myList.displayList());
+// myList.insertBefore(4, 5);
+// console.log(myList.displayList());
+// myList.deleteHead();
+// console.log(myList.displayList());
+// myList.deleteNode(8);
+// console.log(myList.displayList());
+// console.log(myList.length);
+// console.log(myList.isEmpty());
+// console.log(myList.getLength());
 
-console.log("Something New");
+// console.log("Something New");
 
-console.log("Something New Other");
-console.log("New Line Added");
-console.log("New Line Added");
-console.log("New Line Added");
+// console.log("Something New Other");
+// console.log("New Line Added");
+// console.log("New Line Added");
+// console.log("New Line Added");
+
+module.exports = LinkedList;
