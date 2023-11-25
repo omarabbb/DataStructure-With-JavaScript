@@ -14,6 +14,7 @@ class LinkedList {
     this.length = 0;
   }
 
+  // Add to the end of the list
   addToTail(_data) {
     const newNode = new Node(_data);
 
@@ -28,6 +29,7 @@ class LinkedList {
     ++this.length;
   }
 
+  // Add to the beginning of the list
   addToHead(_data) {
     const newNode = new Node(_data);
 
@@ -37,6 +39,7 @@ class LinkedList {
     ++this.length;
   }
 
+  // Insert before a node
   insertBefore(node, _data) {
     const newNode = new Node(_data);
     const currentNode = this.findNodeParent(node);
@@ -51,6 +54,7 @@ class LinkedList {
     ++this.length;
   }
 
+  // Insert after a node
   insertAfter(node, _data) {
     const newNode = new Node(_data);
     const currentNode = this.findNode(node);
@@ -65,6 +69,7 @@ class LinkedList {
     ++this.length;
   }
 
+  // Delete a node
   deleteNode(node) {
     const currentNode = this.findNode(node);
 
@@ -86,6 +91,7 @@ class LinkedList {
     --this.length;
   }
 
+  // Delete the head node
   deleteHead() {
     if (this.headNode === null) {
       return;
@@ -94,6 +100,7 @@ class LinkedList {
     this.deleteNode(this.headNode.data);
   }
 
+  // Find a node
   findNode(_data) {
     let currentNode = this.headNode;
     while (currentNode != null) {
@@ -104,6 +111,7 @@ class LinkedList {
     }
   }
 
+  // Find the parent of a node
   findNodeParent(_data) {
     let currentNode = this.headNode;
     while (currentNode) {
@@ -115,14 +123,17 @@ class LinkedList {
     }
   }
 
+  // Get the length of the list
   getLength() {
     return this.length;
   }
 
+  // Check if the list is empty
   isEmpty() {
     return this.length ? false : true;
   }
 
+  // Display the list
   displayList() {
     let currentNode = this.headNode;
     let outPut = "";
