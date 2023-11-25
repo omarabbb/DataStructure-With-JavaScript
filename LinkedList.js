@@ -171,3 +171,6 @@ console.log(myList.isEmpty());
 console.log(myList.getLength());
 
 console.log("Something New");
+
+console.log("Something New Other");
+console.log("New Line Added");
