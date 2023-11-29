@@ -1,5 +1,4 @@
-// Singly Linked List Impelmentation
-
+// Creating Node Class
 class Node {
   constructor(data) {
     this.data = data;
@@ -7,18 +6,21 @@ class Node {
   }
 }
 
+// Creating LinkedList Class
 class LinkedList {
+  // Head = {data : _data, nextNode : [object]}
   constructor() {
     this.headNode = null;
     this.tailNode = null;
     this.length = 0;
   }
 
-  // Add to the end of the list
-  addToTail(_data) {
-    const newNode = new Node(_data);
+  // Adding Elements at The Ending Of The List
+  insertLast(data) {
+    // Creating New Node
+    const newNode = new Node(data);
 
-    if (!this.headNode) {
+    if (this.headNode == null) {
       this.headNode = newNode;
       this.tailNode = newNode;
     } else {
@@ -26,12 +28,14 @@ class LinkedList {
       this.tailNode = newNode;
     }
 
+    // Increase Number of Elements Elements
     ++this.length;
   }
 
-  // Add to the beginning of the list
-  addToHead(_data) {
-    const newNode = new Node(_data);
+  // Change The Head Element
+  insertHead(data) {
+    // Creating New Node
+    const newNode = new Node(data);
 
     newNode.nextNode = this.headNode;
     this.headNode = newNode;
@@ -39,142 +43,77 @@ class LinkedList {
     ++this.length;
   }
 
-  // Insert before a node
-  insertBefore(node, _data) {
-    const newNode = new Node(_data);
-    const currentNode = this.findNodeParent(node);
+  // Insert After Node
+  insertAfter(nodeData, data) {
+    const newNode = new Node(data);
+    let currentNode = this.findNode(nodeData);
 
-    newNode.nextNode = currentNode.nextNode;
-    currentNode.nextNode = newNode;
-
-    if (newNode.nextNode === null) {
-      this.tailNode = newNode;
+    if (currentNode != null) {
+      newNode.nextNode = currentNode.nextNode;
+      currentNode.nextNode = newNode;
     }
 
     ++this.length;
   }
 
-  // Insert after a node
-  insertAfter(node, _data) {
-    const newNode = new Node(_data);
-    const currentNode = this.findNode(node);
+  // Remove Elmement From The List
+  removeNode(data) {
+    // Finding The Node
+    let currentNode = this.findNode(data);
+    let parentNode = this.findParent(data);
 
-    newNode.nextNode = currentNode.nextNode;
-    currentNode.nextNode = newNode;
-
-    if (newNode.nextNode === null) {
-      this.tailNode = newNode;
-    }
-
-    ++this.length;
-  }
-
-  // Delete a node
-  deleteNode(node) {
-    const currentNode = this.findNode(node);
-
-    if (this.headNode === this.tailNode) {
-      this.headNode = null;
-      this.tailNode = null;
-    } else if (this.headNode == currentNode) {
-      this.headNode = currentNode.nextNode;
-    } else {
-      const parentNode = this.findNodeParent(node);
-
-      if (this.tailNode === currentNode) {
-        this.tailNode = parentNode;
+    if (currentNode != null) {
+      // If The Node is The Head
+      if (currentNode == this.headNode) {
+        this.headNode = currentNode.nextNode;
       } else {
         parentNode.nextNode = currentNode.nextNode;
       }
+      --this.length;
     }
-
-    --this.length;
   }
 
-  // Delete the head node
-  deleteHead() {
-    if (this.headNode === null) {
-      return;
-    }
-
-    this.deleteNode(this.headNode.data);
-  }
-
-  // Find a node
-  findNode(_data) {
+  // Finding Element
+  findNode(nodeData) {
+    // Base Traversal In The List
     let currentNode = this.headNode;
-    while (currentNode != null) {
-      if (currentNode.data == _data) {
-        return currentNode;
-      }
-      currentNode = currentNode.nextNode;
-    }
-  }
 
-  // Find the parent of a node
-  findNodeParent(_data) {
-    let currentNode = this.headNode;
     while (currentNode) {
-      if (currentNode.nextNode.data == _data) {
+      if (currentNode.data == nodeData) {
         return currentNode;
       }
-
       currentNode = currentNode.nextNode;
     }
   }
 
-  // Get the length of the list
+  // Finding Parent of Element
+  findParent(nodeData) {
+    // Base Traversal In The List
+    let currentNode = this.headNode;
+
+    while (currentNode.nextNode) {
+      if (currentNode.data == nodeData) {
+        return currentNode;
+      }
+      currentNode = currentNode.nextNode;
+    }
+  }
+
+  // Get The Number of Elements in List
   getLength() {
     return this.length;
   }
 
-  // Check if the list is empty
+  // Check if The List is Empty
   isEmpty() {
-    return this.length ? false : true;
+    return this.length == 0 ? true : false;
   }
 
-  // Display the list
-  displayList() {
-    let currentNode = this.headNode;
-    let outPut = "";
-
-    while (currentNode) {
-      outPut += `${currentNode.data} => `;
-      currentNode = currentNode.nextNode;
-    }
-
-    return outPut;
+  // Check if The List has Data
+  hasData() {
+    return this.length > 0 ? true : false;
   }
 }
 
-// // Test Area
-// // Adding Some Test Cases
-// const myList = new LinkedList();
-// console.log(myList.isEmpty());
-// myList.addToTail(4);
-// myList.addToTail(3);
-// myList.addToTail(8);
-// myList.addToTail(12);
-// myList.addToHead(0);
-
-// console.log(myList.displayList());
-// myList.insertAfter(4, 2);
-// console.log(myList.displayList());
-// myList.insertBefore(4, 5);
-// console.log(myList.displayList());
-// myList.deleteHead();
-// console.log(myList.displayList());
-// myList.deleteNode(8);
-// console.log(myList.displayList());
-// console.log(myList.length);
-// console.log(myList.isEmpty());
-// console.log(myList.getLength());
-
-// console.log("Something New");
-
-// console.log("Something New Other");
-// console.log("New Line Added");
-// console.log("New Line Added");
-// console.log("New Line Added");
-
+// Exporting LinkedList Class
 module.exports = LinkedList;
