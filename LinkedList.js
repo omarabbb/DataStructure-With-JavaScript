@@ -7,6 +7,9 @@ class Node {
 }
 
 // Creating LinkedList Class
+/*
+ * Represents a linked list data structure.
+ */
 class LinkedList {
   // Head = {data : _data, nextNode : [object]}
   constructor() {
