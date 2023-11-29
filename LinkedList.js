@@ -113,6 +113,19 @@ class LinkedList {
   hasData() {
     return this.length > 0 ? true : false;
   }
+
+  // Display The Linked List
+  displayList() {
+    let currentNode = this.headNode;
+    let list = "";
+
+    while (currentNode) {
+      list += currentNode.data + " -> ";
+      currentNode = currentNode.nextNode;
+    }
+
+    console.log(list);
+  }
 }
 
 // Exporting LinkedList Class
