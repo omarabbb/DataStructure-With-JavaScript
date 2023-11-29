@@ -1,38 +1,40 @@
-const LinkedList = require("./LinkedList");
-
-/**
- * Represents a stack data structure.
- */
+// Stack Based on Array
 class Stack {
   constructor() {
-    this.dataStore = new LinkedList();
+    this.items = [];
+    this.top = null;
   }
-
-  push(element) {
-    this.dataStore.insertLast(element);
+  getTop() {
+    return this.top;
   }
-
-  pop() {
-    this.dataStore.removeNode(this.dataStore.tailNode.data);
-  }
-
-  peek() {
-    return this.dataStore.tailNode.data;
-  }
-
   isEmpty() {
-    return this.dataStore.length === 0;
+    return this.items.length === 0;
   }
-
-  clear() {
-    this.dataStore = new LinkedList();
-  }
-
-  print() {
-    this.dataStore.displayList();
-  }
-
   size() {
-    return this.dataStore.length;
+    return this.items.length;
+  }
+  push(element) {
+    this.items.push(element);
+    this.top = element;
+  }
+  pop() {
+    if (this.items.length !== 0) {
+      if (this.items.length === 1) {
+        this.top = null;
+        return this.items.pop();
+      } else {
+        this.top = this.items[this.items.length - 2];
+        return this.items.pop();
+      }
+    } else {
+      return null;
+    }
+  }
+  print() {
+    let str = "";
+    for (let i = 0; i < this.items.length; i++) {
+      str += this.items[i] + " ";
+    }
+    return str;
   }
 }
