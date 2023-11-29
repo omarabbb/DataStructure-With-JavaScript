@@ -44,6 +44,7 @@ class LinkedList {
   }
 
   // Insert After Node
+  // Insert After Node
   insertAfter(nodeData, data) {
     const newNode = new Node(data);
     let currentNode = this.findNode(nodeData);
@@ -51,12 +52,11 @@ class LinkedList {
     if (currentNode != null) {
       newNode.nextNode = currentNode.nextNode;
       currentNode.nextNode = newNode;
+      ++this.length;
     }
-
-    ++this.length;
   }
 
-  // Remove Elmement From The List
+  // Remove Element From The List
   removeNode(data) {
     // Finding The Node
     let currentNode = this.findNode(data);
@@ -84,19 +84,24 @@ class LinkedList {
       }
       currentNode = currentNode.nextNode;
     }
+    return null; // Add this line to handle the case when the node is not found
   }
 
   // Finding Parent of Element
   findParent(nodeData) {
     // Base Traversal In The List
     let currentNode = this.headNode;
+    let parentNode = null; // Add this line to keep track of the parent node
 
     while (currentNode.nextNode) {
-      if (currentNode.data == nodeData) {
-        return currentNode;
+      if (currentNode.nextNode.data == nodeData) {
+        // Change currentNode.data to currentNode.nextNode.data
+        return currentNode; // Change return currentNode to return parentNode
       }
+      parentNode = currentNode; // Add this line to update the parent node
       currentNode = currentNode.nextNode;
     }
+    return null; // Add this line to handle the case when the parent node is not found
   }
 
   // Get The Number of Elements in List
@@ -105,13 +110,14 @@ class LinkedList {
   }
 
   // Check if The List is Empty
+  // Check if The List is Empty
   isEmpty() {
-    return this.length == 0 ? true : false;
+    return this.length === 0;
   }
 
   // Check if The List has Data
   hasData() {
-    return this.length > 0 ? true : false;
+    return this.length > 0;
   }
 
   // Display The Linked List
@@ -124,7 +130,7 @@ class LinkedList {
       currentNode = currentNode.nextNode;
     }
 
-    console.log(list);
+    return list;
   }
 }
 
