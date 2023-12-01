@@ -25,3 +25,5 @@ class Stack {
     return this.dataStore.hasData() ? false : true;
   }
 }
+
+module.exports = Stack;
