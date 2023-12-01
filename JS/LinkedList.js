@@ -158,6 +158,11 @@ class LinkedList {
       return slowNode.data;
     }
   }
+
+  // has Data Function
+  hasData() {
+    return this.calcLength() != 0;
+  }
 }
 
 module.exports = LinkedList;
